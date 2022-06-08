@@ -1,3 +1,24 @@
+My-game
+
+Created a simple memory card game using create react app.
+
+Description
+
+The game contains 36 cards that reveals album covers when clicked. To complete the game all 16 images must match.
+
+Getting Started
+
+Dependencies:
+
+Lodash
+React
+React bootstrap
+
+Executing program:
+Install the dependencies and start the app:
+
+npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,38 +1,145 @@
-.App {
-  text-align: center;
+body{
+    background-image: url('./memes/brickwall.jpg');
+    padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    font-family: fantasy;
+    position: absolute;
+    left: 10px;
+    color: #fff;
+    animation: myHeader 5s linear 2s;
+    font-family: 'Metal Mania', cursive;
+    font-family: 'Russo One', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@keyframes myHeader {
+    0%   {background-color:silver; left:50px; top:50px;}
+    25%  {background-color:black; left:900px; top:0px;}
+    50%  {background-color:silver; left:900px; top:600px;}
+    75%  {background-color:black; left:0px; top:600px;}
+    100% {background-color:silver; left:50px; top:50px;}
+    }
+
+.board{
+    width: calc(120vh - 240px);
+    max-width: 120vw;
+    display:grid;
+    grid-gap:10px;
+    margin: auto;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 60px;
+}
+.album-outer{
+    perspective:1000px;
+    height: calc((120vh - 290px) / 6);
+    max-height: calc(100vw / 6);
+    
+}
+.album{
+    border-radius: 50%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform:rotateY(180deg);
+    transform-style: preserve-3d;
+    transition: all 0.3s;
+}
+.album .front, .album .back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+}
+.album .front img{
+    display: block;
+    max-width: 100%;
+    border-radius: 50%;
+}
+.album .back{
+    background-color: black;
+    transform:rotateY(180deg);
+}
+.album-outer.flipped .album{
+    transform:rotateY(0);
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.results{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    padding: 20px 0;
+    font-size: 2rem;
+    position: absolute;
+    top: 120px;
+    left: 5px;
+        
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.restartButton {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position:relative;
+    z-index: 0;
+    border-radius: 10px;
+    position: absolute;
+    align-items: center;
+    bottom: 30px;
+    right: 100px;
+    }
+    
+    .restartButton:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    }
+    
+    .restartButton:active {
+    color: #000
+    }
+    
+    .restartButton:active:after {
+    background: transparent;
+    }
+    
+    .restartButton:hover:before {
+    opacity: 1;
+    }
+    
+    .restartButton:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    }
+    
+    @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+    }
